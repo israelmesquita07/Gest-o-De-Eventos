@@ -20,16 +20,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableViewEventos.dataSource = self
         tableViewEventos.delegate = self
         
-//        REST.returnEvento(idCliente: -1) { (eventos) in
-//            self.eventos = eventos
-//            DispatchQueue.main.async {
-//                self.tableViewEventos.reloadData()
-//            }
-//        }
-        
-        REST.returnParticipantes(idEvento: 2) { (participantes) in
-            self.participantes = participantes
+        REST.returnEvento(idCliente: -1) { (eventos) in
+            self.eventos = eventos
+            DispatchQueue.main.async {
+                self.tableViewEventos.reloadData()
+            }
         }
+//
+//        REST.returnParticipantes(idEvento: 2) { (participantes) in
+//            self.participantes = participantes
+//        }
         
     }
     
