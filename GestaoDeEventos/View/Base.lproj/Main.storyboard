@@ -144,7 +144,7 @@
                                 <rect key="frame" x="16" y="272" width="343" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaReuso" id="nCr-MS-iVM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celulaReusoParticipante" id="nCr-MS-iVM">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nCr-MS-iVM" id="xX9-vG-kJ2">
@@ -327,6 +327,7 @@
                         <viewLayoutGuide key="safeArea" id="JFP-DR-cke"/>
                     </view>
                     <connections>
+                        <outlet property="assinaturaImg" destination="aPC-yg-cFe" id="VUD-io-4iu"/>
                         <outlet property="txtDataCadastro" destination="Xio-Pz-jEc" id="TZh-lx-zWB"/>
                         <outlet property="txtEmailParticipante" destination="89y-1L-Lgs" id="44y-Vs-OOw"/>
                         <outlet property="txtNomeParticipante" destination="fLx-kI-X20" id="zNw-tX-fRw"/>

@@ -12,7 +12,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
    
     @IBOutlet weak var tableViewEventos: UITableView!
     var eventos:[Eventos] = []
-    var participantes:[Participante] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +25,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.tableViewEventos.reloadData()
             }
         }
-//
-//        REST.returnParticipantes(idEvento: 2) { (participantes) in
-//            self.participantes = participantes
-//        }
         
     }
     

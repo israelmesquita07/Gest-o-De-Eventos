@@ -52,7 +52,7 @@ class REST {
         }
     }
     
-    
+    // POST /Evento/ParticipantesDoEvento
     class func returnParticipantes(idEvento:Int, onComplete: @escaping([Participante]) -> Void) {
         
         let params = ["Pagina":"1", "RegistrosPorPagina":"1"] as Dictionary<String, String>
@@ -64,43 +64,78 @@ class REST {
             
         let dataTask = URLSession.shared.dataTask(with: request) { (dataRtd, response, error) in
             
-            if let data = dataRtd {
-                print(response!)
-                do {
-                    let objJson = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, AnyObject>
-                    
-//                    var participes:[String:Any] = [:]
-                    var participantes:[Participante] = []
-                    var i = 0
-                    while objJson.count > i {
-                        let participes = objJson["Lista"]!["Nome"]
-//                        let participe = participes!["Nome"]
-                        print(participes as Any)
-//                        print(participe as Any)
+            if error == nil {
+                if let data = dataRtd {
+                    print(response!)
+                    do {
+                        let objJson = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, AnyObject>
                         
-//                        let evento = Eventos(id: participe["Id"] as! Int, nome: participe["Nome"] as! String, imagem: UIImage(data:imagem!)!, clienteImagem: UIImage(data:clienteImagem!)!, inicio: participe["Quando"] as! String, local: participe["Local"] as! String)
+                        var participantes:[Participante] = []
+                        var i = 0
+                        while objJson.count > i {
+                            let participes = objJson["Lista"]
+                            let chekIn = (participes!["CheckIn"] != nil) ? true : false
+                            
+                            let participante = Participante(id: participes!["Id"] as! Int, nome: participes!["Nome"] as! String, email: "", assinatura: UIImage(), dataCadastro: "", checkIn: chekIn)
+                            
+                            participantes.append(participante)
+                            
+                            i+=1
+                        }
+                        onComplete(participantes)
                         
-//                        participantes.append(evento)
-                        i+=1
+                    } catch {
+                        print("error")
                     }
-                    onComplete(participantes)
-                    
-                } catch {
-                    print("error")
                 }
+            }else{
+                print(error?.localizedDescription as Any)
             }
             
         }
         dataTask.resume()
-        
-        
     }
     
-    
-    
-    
-    
-    
-    
+    // GET / Participante/ObterParticipante
+    class func returnParticipante(idParticipante:Int = -1, onComplete: @escaping(Participante) -> Void) {
+        
+        if let url = URL(string: "http://receptivawebapi.azurewebsites.net/api/Participante/ObterParticipante?idParticipante=\(idParticipante)") {
+            
+            let dataTask = URLSession.shared.dataTask(with: url, completionHandler: { (dataRtd, response, error) in
+                
+                if error == nil {
+                    
+                    if let data = dataRtd {
+                        do {
+                            
+                            if let objJson = try JSONSerialization.jsonObject(with: data, options: []) as? NSArray {
+                                var participes:[String:Any] = [:]
+                                var participante: Participante!
+                                var i = 0
+                                while objJson.count > i {
+                                    
+                                    participes = (objJson[i] as? [String:Any])!
+                                    
+                                    let assinatura = try? Data(contentsOf: URL(string:(participes["Assinatura"] as? String)!)!)
+                                    let chekIn = (participes["CheckIn"] != nil) ? true : false
+                                    
+                                    participante = Participante(id: participes["Id"] as! Int, nome: participes["Nome"] as! String, email: participes["Email"] as! String, assinatura: UIImage(data:assinatura!)!, dataCadastro: participes["DataCadastro"] as! String, checkIn: chekIn)
+                                    i+=1
+                                }
+                                onComplete(participante)
+                            }
+                            
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
+                    
+                }else{
+                    print(error?.localizedDescription as Any)
+                }
+            })
+            dataTask.resume()
+        }
+    }
     
 }

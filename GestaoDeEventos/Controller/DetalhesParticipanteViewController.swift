@@ -11,30 +11,29 @@ import UIKit
 class DetalhesParticipanteViewController: UIViewController {
 
     var idParticipante:Int!
+    var participanteDetalhe: Participante!
+    
     @IBOutlet weak var txtNomeParticipante: UITextField!
     @IBOutlet weak var txtEmailParticipante: UITextField!
     @IBOutlet weak var txtDataCadastro: UITextField!
+    @IBOutlet weak var assinaturaImg: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        REST.returnParticipante(idParticipante: idParticipante) { (participante) in
+            DispatchQueue.main.async {
+                self.txtNomeParticipante.text = participante.nome
+                self.txtDataCadastro.text = participante.dataCadastro
+                self.txtEmailParticipante.text = participante.email
+                self.assinaturaImg.image = participante.assinatura
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
