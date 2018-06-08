@@ -108,7 +108,7 @@
                                             <outlet property="imagem" destination="ipU-aq-zpe" id="gd3-NS-LJi"/>
                                             <outlet property="lblLocalEvento" destination="Ul0-3F-5sk" id="yTl-J4-zm4"/>
                                             <outlet property="lblNomeEvento" destination="dpF-T0-u8g" id="FXX-68-S1W"/>
-                                            <segue destination="cTH-pX-adm" kind="show" id="zkL-aq-bxD"/>
+                                            <segue destination="cTH-pX-adm" kind="show" identifier="detalheEvento" id="zkL-aq-bxD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -132,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="565.60000000000002" y="124.58770614692655"/>
         </scene>
-        <!--View Controller-->
+        <!--Detalhe Evento View Controller-->
         <scene sceneID="qnL-E5-w2E">
             <objects>
-                <viewController id="cTH-pX-adm" sceneMemberID="viewController">
+                <viewController id="cTH-pX-adm" customClass="DetalheEventoViewController" customModule="GestaoDeEventos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cj1-mv-T4U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,7 +152,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="vMJ-V5-6Dc" kind="show" id="Cms-oy-uWo"/>
+                                            <segue destination="vMJ-V5-6Dc" kind="show" identifier="detalheParticipante" id="Cms-oy-uWo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -214,15 +214,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Frj-Ux-LJQ"/>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="zhv-3u-Kwq" id="XGk-sB-JKF"/>
+                        <outlet property="lblData" destination="0ld-8e-3yc" id="AXd-JW-Sqr"/>
+                        <outlet property="lblLocalEvento" destination="4xo-22-SqZ" id="s9D-oC-tVI"/>
+                        <outlet property="lblNomeEvento" destination="HwU-rz-LUz" id="vl6-By-Xgc"/>
+                        <outlet property="tableViewParticipantes" destination="NPj-iG-bSp" id="TQE-de-92F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="REj-LG-WcZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1487" y="125"/>
         </scene>
-        <!--View Controller-->
+        <!--Detalhes Participante View Controller-->
         <scene sceneID="Plm-LM-Ssw">
             <objects>
-                <viewController id="vMJ-V5-6Dc" sceneMemberID="viewController">
+                <viewController id="vMJ-V5-6Dc" customClass="DetalhesParticipanteViewController" customModule="GestaoDeEventos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Xs-Z1-Oyp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,13 +243,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWj-CE-W37">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                <color key="textColor" red="0.97254901959999995" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fLx-kI-X20">
                                                 <rect key="frame" x="0.0" y="26.5" width="335" height="40"/>
-                                                <color key="backgroundColor" red="1" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" red="0.67450980390000004" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
@@ -254,13 +261,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tS3-bb-TsR">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.50980392159999999" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="89y-1L-Lgs">
                                                 <rect key="frame" x="0.0" y="26.5" width="335" height="40"/>
-                                                <color key="backgroundColor" red="0.77647058820000003" green="0.94901960780000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" red="0.0" green="0.50980392159999999" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
@@ -272,13 +279,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data de Cadastro" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0t-fr-Lyg">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.50980392159999999" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xio-Pz-jEc">
                                                 <rect key="frame" x="0.0" y="26.5" width="335" height="40"/>
-                                                <color key="backgroundColor" red="0.88235294119999996" green="0.96862745100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" red="0.0" green="0.023529411760000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
@@ -291,13 +298,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CheckIn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNG-eM-BO5">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.50980392159999999" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NS6-7i-Kuo">
                                                 <rect key="frame" x="0.0" y="26.5" width="335" height="40"/>
-                                                <color key="backgroundColor" red="0.88235294119999996" green="0.96862745100000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" red="0.0" green="0.023529411760000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
@@ -319,6 +326,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JFP-DR-cke"/>
                     </view>
+                    <connections>
+                        <outlet property="txtDataCadastro" destination="Xio-Pz-jEc" id="TZh-lx-zWB"/>
+                        <outlet property="txtEmailParticipante" destination="89y-1L-Lgs" id="44y-Vs-OOw"/>
+                        <outlet property="txtNomeParticipante" destination="fLx-kI-X20" id="zNw-tX-fRw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLk-tC-Vna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

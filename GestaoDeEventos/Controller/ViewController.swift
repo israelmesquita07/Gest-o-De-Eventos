@@ -52,6 +52,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detalheEvento" {
+            if let indexPath = tableViewEventos.indexPathForSelectedRow{
+                let eventosDetalhe = self.eventos[(indexPath.row)]
+                let viewController = segue.destination as! DetalheEventoViewController
+                viewController.evento = eventosDetalhe
+            }
+            
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

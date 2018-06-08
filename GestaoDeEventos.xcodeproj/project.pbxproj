@@ -16,6 +16,8 @@
 		0735CB7720C8E65B00C7589A /* Participante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0735CB7620C8E65B00C7589A /* Participante.swift */; };
 		0745B7D920C9BF55000DFF85 /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0745B7D820C9BF55000DFF85 /* REST.swift */; };
 		0745B7DB20C9FE14000DFF85 /* EventosCelula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0745B7DA20C9FE14000DFF85 /* EventosCelula.swift */; };
+		0745B7DD20CA2C61000DFF85 /* DetalheEventoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0745B7DC20CA2C61000DFF85 /* DetalheEventoViewController.swift */; };
+		0745B7DF20CA3048000DFF85 /* DetalhesParticipanteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0745B7DE20CA3048000DFF85 /* DetalhesParticipanteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		0735CB7620C8E65B00C7589A /* Participante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participante.swift; sourceTree = "<group>"; };
 		0745B7D820C9BF55000DFF85 /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		0745B7DA20C9FE14000DFF85 /* EventosCelula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventosCelula.swift; sourceTree = "<group>"; };
+		0745B7DC20CA2C61000DFF85 /* DetalheEventoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalheEventoViewController.swift; sourceTree = "<group>"; };
+		0745B7DE20CA3048000DFF85 /* DetalhesParticipanteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalhesParticipanteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +66,44 @@
 		0735CB6120C8D52600C7589A /* GestaoDeEventos */ = {
 			isa = PBXGroup;
 			children = (
+				0745B7E220CA326C000DFF85 /* View */,
+				0745B7E120CA3242000DFF85 /* Controller */,
+				0745B7E020CA320B000DFF85 /* Model */,
 				0735CB6220C8D52600C7589A /* AppDelegate.swift */,
-				0735CB6420C8D52600C7589A /* ViewController.swift */,
-				0745B7D820C9BF55000DFF85 /* REST.swift */,
-				0735CB6620C8D52600C7589A /* Main.storyboard */,
-				0745B7DA20C9FE14000DFF85 /* EventosCelula.swift */,
-				0735CB7420C8E3C200C7589A /* Eventos.swift */,
-				0735CB7620C8E65B00C7589A /* Participante.swift */,
 				0735CB6920C8D52600C7589A /* Assets.xcassets */,
-				0735CB6B20C8D52600C7589A /* LaunchScreen.storyboard */,
 				0735CB6E20C8D52600C7589A /* Info.plist */,
 			);
 			path = GestaoDeEventos;
+			sourceTree = "<group>";
+		};
+		0745B7E020CA320B000DFF85 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0735CB7620C8E65B00C7589A /* Participante.swift */,
+				0745B7DA20C9FE14000DFF85 /* EventosCelula.swift */,
+				0735CB7420C8E3C200C7589A /* Eventos.swift */,
+				0745B7D820C9BF55000DFF85 /* REST.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0745B7E120CA3242000DFF85 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0745B7DC20CA2C61000DFF85 /* DetalheEventoViewController.swift */,
+				0745B7DE20CA3048000DFF85 /* DetalhesParticipanteViewController.swift */,
+				0735CB6420C8D52600C7589A /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0745B7E220CA326C000DFF85 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0735CB6B20C8D52600C7589A /* LaunchScreen.storyboard */,
+				0735CB6620C8D52600C7589A /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,10 +178,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0745B7DF20CA3048000DFF85 /* DetalhesParticipanteViewController.swift in Sources */,
 				0735CB6520C8D52600C7589A /* ViewController.swift in Sources */,
 				0735CB7720C8E65B00C7589A /* Participante.swift in Sources */,
 				0745B7DB20C9FE14000DFF85 /* EventosCelula.swift in Sources */,
 				0735CB6320C8D52600C7589A /* AppDelegate.swift in Sources */,
+				0745B7DD20CA2C61000DFF85 /* DetalheEventoViewController.swift in Sources */,
 				0745B7D920C9BF55000DFF85 /* REST.swift in Sources */,
 				0735CB7520C8E3C200C7589A /* Eventos.swift in Sources */,
 			);

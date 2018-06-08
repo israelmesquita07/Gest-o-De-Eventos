@@ -10,45 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GestaoDeEventos/REST.swift"
-            timestampString = "550118169.892709"
+            timestampString = "550119848.341522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "returnParticipantes(idEvento:onComplete:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static GestaoDeEventos.REST.returnParticipantes(idEvento: Swift.Int, onComplete: (Swift.Array&lt;GestaoDeEventos.Participante&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "GestaoDeEventos"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Israel3D/Documents/Swift/GestaoDeEventos/GestaoDeEventos/REST.swift"
-                  timestampString = "550118170.101549"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "1496">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__ObjC.URLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static GestaoDeEventos.REST.returnParticipantes(idEvento: Swift.Int, onComplete: (Swift.Array&lt;GestaoDeEventos.Participante&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "GestaoDeEventos"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Israel3D/Documents/Swift/GestaoDeEventos/GestaoDeEventos/REST.swift"
-                  timestampString = "550118170.106235"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "33">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GestaoDeEventos/REST.swift"
-            timestampString = "550118169.893255"
+            timestampString = "550119848.342047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "returnParticipantes(idEvento:onComplete:)"
             landmarkType = "7">
          </BreakpointContent>
