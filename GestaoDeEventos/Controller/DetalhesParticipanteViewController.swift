@@ -17,6 +17,7 @@ class DetalhesParticipanteViewController: UIViewController {
     @IBOutlet weak var txtEmailParticipante: UITextField!
     @IBOutlet weak var txtDataCadastro: UITextField!
     @IBOutlet weak var assinaturaImg: UIImageView!
+    @IBOutlet weak var swChekIn: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,8 @@ class DetalhesParticipanteViewController: UIViewController {
                 self.txtDataCadastro.text = participante.dataCadastro
                 self.txtEmailParticipante.text = participante.email
                 self.assinaturaImg.image = participante.assinatura
+                self.swChekIn.isOn = participante.checkIn ? true : false
+                
             }
         }
     }

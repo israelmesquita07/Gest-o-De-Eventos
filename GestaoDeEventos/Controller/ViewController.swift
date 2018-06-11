@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
    
     @IBOutlet weak var tableViewEventos: UITableView!
+    var activityIndicator = UIActivityIndicatorView()
     var eventos:[Eventos] = []
     
     override func viewDidLoad() {
@@ -19,9 +20,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableViewEventos.dataSource = self
         tableViewEventos.delegate = self
         
+        carregando()
+        
         REST.returnEvento(idCliente: -1) { (eventos) in
             self.eventos = eventos
             DispatchQueue.main.async {
+                self.pararCarregando()
                 self.tableViewEventos.reloadData()
             }
         }
@@ -58,7 +62,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         }
     }
-
+    
+    func carregando() {
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        activityIndicator.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+        
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    
+    func pararCarregando(){
+        activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

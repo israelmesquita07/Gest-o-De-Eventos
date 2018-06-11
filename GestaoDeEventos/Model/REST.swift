@@ -53,9 +53,9 @@ class REST {
     }
     
     // POST /Evento/ParticipantesDoEvento
-    class func returnParticipantes(idEvento:Int, onComplete: @escaping([Participante]) -> Void) {
+    class func returnParticipantes(idEvento:Int, pagina:Int, totalPaginas:Int, registrosPorPagina:Int, onComplete: @escaping([Participante], Int, Int, Int) -> Void) {
         
-        let params = ["Pagina":"1", "RegistrosPorPagina":"1"] as Dictionary<String, String>
+        let params = ["Pagina":"\(pagina)", "RegistrosPorPagina":"\(registrosPorPagina)"] as Dictionary<String, String>
         
         var request = URLRequest(url: URL(string: "http://receptivawebapi.azurewebsites.net/api/Evento/ParticipantesDoEvento?idEvento=\(idEvento)")!)
         request.httpMethod = "POST"
@@ -66,23 +66,29 @@ class REST {
             
             if error == nil {
                 if let data = dataRtd {
-                    print(response!)
                     do {
                         let objJson = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, AnyObject>
-                        
+                        var part:[String:Any] = [:]
                         var participantes:[Participante] = []
-                        var i = 0
-                        while objJson.count > i {
-                            let participes = objJson["Lista"]
-                            let chekIn = (participes!["CheckIn"] != nil) ? true : false
+                        let pagina = objJson["Paginador"]!["Pagina"] as! Int
+                        let totalPaginas = objJson["Paginador"]!["TotalPaginas"] as! Int
+                        let registrosPagina = objJson["Paginador"]!["RegistrosPorPagina"] as! Int
+                        
+                        if let participes = objJson["Lista"] as? NSArray {
+                            var i = 0
+                            while participes.count > i {
+                                
+                                part = (participes[i] as? [String:Any])!
+                                let chekIn = (objJson["CheckIn"] as? String != nil) ? true : false
+                                let participante = Participante(id: part["Id"] as! Int, nome: part["Nome"] as! String, email: "", assinatura: UIImage(), dataCadastro: "", checkIn: chekIn)
+                                
+                                participantes.append(participante)
+                                i+=1
+                            }
                             
-                            let participante = Participante(id: participes!["Id"] as! Int, nome: participes!["Nome"] as! String, email: "", assinatura: UIImage(), dataCadastro: "", checkIn: chekIn)
-                            
-                            participantes.append(participante)
-                            
-                            i+=1
                         }
-                        onComplete(participantes)
+                        
+                        onComplete(participantes, pagina, totalPaginas, registrosPagina)
                         
                     } catch {
                         print("error")
@@ -107,23 +113,21 @@ class REST {
                     
                     if let data = dataRtd {
                         do {
+                            let objJson = try JSONSerialization.jsonObject(with: data) as! Dictionary<String, AnyObject>
                             
-                            if let objJson = try JSONSerialization.jsonObject(with: data, options: []) as? NSArray {
-                                var participes:[String:Any] = [:]
-                                var participante: Participante!
-                                var i = 0
-                                while objJson.count > i {
-                                    
-                                    participes = (objJson[i] as? [String:Any])!
-                                    
-                                    let assinatura = try? Data(contentsOf: URL(string:(participes["Assinatura"] as? String)!)!)
-                                    let chekIn = (participes["CheckIn"] != nil) ? true : false
-                                    
-                                    participante = Participante(id: participes["Id"] as! Int, nome: participes["Nome"] as! String, email: participes["Email"] as! String, assinatura: UIImage(data:assinatura!)!, dataCadastro: participes["DataCadastro"] as! String, checkIn: chekIn)
-                                    i+=1
-                                }
-                                onComplete(participante)
+                            let chekIn = (objJson["CheckIn"] as? String != nil) ? true : false
+                            let dateFormated = converterData(objJson["DataCadastro"] as! String)
+                            var assinatura:UIImage!
+                            if(objJson["Assinatura"]! as? String != nil){
+                                assinatura = UIImage(data:try Data(contentsOf: URL(string:(objJson["Assinatura"] as? String)!)!))
+                            }else{
+                                assinatura = UIImage()
                             }
+                            
+                            let participante = Participante(id: objJson["Id"] as! Int, nome: objJson["Nome"] as! String, email: objJson["Email"] as? String ?? "", assinatura: assinatura ?? UIImage(), dataCadastro: dateFormated , checkIn: chekIn)
+                            
+                            onComplete(participante)
+                            
                             
                         } catch {
                             print(error.localizedDescription)
@@ -137,5 +141,18 @@ class REST {
             dataTask.resume()
         }
     }
+    
+    class func converterData(_ data:String) -> String{
+        let string = String(data.prefix(19))+"Z" // "2017-01-27T18:36:36Z"
+        let dateFormatter = DateFormatter()
+        let tempLocale = dateFormatter.locale
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = dateFormatter.date(from: string)!
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        dateFormatter.locale = tempLocale
+        return dateFormatter.string(from: date)
+    }
+    
     
 }

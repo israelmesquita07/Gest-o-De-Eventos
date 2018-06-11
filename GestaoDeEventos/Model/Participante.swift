@@ -12,8 +12,8 @@ class Participante {
     
     var id: Int!
     var nome: String!
-    var email: String!
-    var assinatura: UIImage!
+    var email: String?
+    var assinatura: UIImage?
     var dataCadastro: String!
     var checkIn: Bool!
     
@@ -22,7 +22,7 @@ class Participante {
         self.id = id
         self.nome = nome
         self.email = email
-        self.assinatura = assinatura
+        self.assinatura = assinatura 
         self.dataCadastro = dataCadastro
         self.checkIn = checkIn
     }
